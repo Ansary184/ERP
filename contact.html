@@ -22,400 +22,695 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-  /* style.css */
+        /* ========================
+   GLOBAL STYLES
+   ======================== */
 :root {
-  --primary-color: #2c3e50;
-  --secondary-color: #3498db;
-  --accent-color: #e74c3c;
-  --text-color: #333;
-  --light-bg: #f8f9fa;
-  --white: #ffffff;
-  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --primary-color: #007bff; /* أزرق */
+    --secondary-color: #0d2c4b; /* كحلي غامق */
+    --text-color: #333;
+    --light-gray: #f4f4f4;
+    --white-color: #ffffff;
+    --font-family: 'Cairo', sans-serif;
+    --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Cairo', sans-serif;
-  line-height: 1.6;
-  color: var(--text-color);
-  direction: rtl;
-  text-align: right;
+    font-family: var(--font-family);
+    line-height: 1.7;
+    color: var(--text-color);
+    background-color: var(--white-color);
 }
 
 .container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* الشريط العلوي */
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+h1, h2, h3, h4 {
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+h1 { font-size: 2.8rem; }
+h2 { font-size: 2.2rem; color: var(--secondary-color); }
+h3 { font-size: 1.5rem; color: var(--secondary-color); }
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+.section-title p {
+    font-size: 1.1rem;
+    color: #777;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    border: 2px solid var(--white-color);
+}
+.btn-secondary:hover {
+    background-color: transparent;
+    color: var(--white-color);
+}
+
+/* ========================
+   NAVBAR
+   ======================== */
 .navbar {
-  background-color: var(--white);
-  box-shadow: var(--shadow);
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  padding: 15px 0;
+    background: var(--white-color);
+    box-shadow: var(--box-shadow);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 }
 
 .navbar .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-color);
 }
-
 .logo span {
-  color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 .nav-links {
-  display: flex;
-  gap: 25px;
+    display: flex;
+    align-items: center;
 }
 
 .nav-links a {
-  text-decoration: none;
-  color: var(--text-color);
-  font-weight: 600;
-  transition: color 0.3s;
+    margin: 0 15px;
+    font-weight: 600;
+    color: var(--text-color);
+    transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 .btn-contact-nav {
-  background-color: var(--secondary-color);
-  color: white !important;
-  padding: 8px 16px;
-  border-radius: 4px;
+    background-color: var(--primary-color);
+    color: var(--white-color) !important;
+    padding: 8px 20px;
+    border-radius: 50px;
+}
+.btn-contact-nav:hover {
+    background-color: #0056b3;
+    color: var(--white-color) !important;
 }
 
 .menu-icon {
-  display: none;
-  font-size: 1.5rem;
-  cursor: pointer;
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
 }
 
-/* قسم البطل */
-.page-hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-              url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
-  background-size: cover;
-  background-position: center;
-  height: 40vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  margin-top: 70px;
-  color: white;
-  text-align: center;
+/* ========================
+   HERO SECTION
+   ======================== */
+.hero {
+    height: 100vh;
+    background: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?fit=crop&w=1920&h=1080') no-repeat center center/cover;
+    position: relative;
+    color: var(--white-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 80px; /* لإزاحة المحتوى عن الـ Navbar */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(13, 44, 75, 0.7); /* طبقة بلون كحلي شفاف */
 }
 
 .hero-content {
-  z-index: 2;
-  position: relative;
+    position: relative;
+    z-index: 2;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+.hero h1 span {
+    color: var(--primary-color);
+}
+.hero p {
+    font-size: 1.3rem;
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
+.hero-buttons .btn {
+    margin: 0 10px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================
+   SYSTEMS SECTION
+   ======================== */
+.systems-section {
+    padding: 80px 0;
+    background-color: var(--light-gray);
+}
+
+.systems-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.system-card {
+    background: var(--white-color);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.system-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.system-card h3 {
+    margin-bottom: 15px;
+}
+
+.system-card p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.btn-learn-more {
+    font-weight: 600;
+}
+.btn-learn-more i {
+    margin-right: 5px;
+    transition: transform 0.3s ease;
+}
+.btn-learn-more:hover i {
+    transform: translateX(-5px);
+}
+
+/* ========================
+   WHY US SECTION
+   ======================== */
+.why-us-section {
+    padding: 80px 0;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+
+.feature-item i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.feature-item h4 {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.feature-item p {
+    color: #666;
+}
+
+/* ========================
+   FOOTER (CONTACT)
+   ======================== */
+.footer {
+    background-color: var(--secondary-color);
+    color: #f0f0f0;
+    padding-top: 60px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-about h3 {
+    font-size: 1.8rem;
+    color: var(--white-color);
+    margin-bottom: 15px;
+}
+.footer-about h3 span {
+    color: var(--primary-color);
+}
+.footer-about p {
+    color: #ccc;
+}
+
+.footer-contact h4, .footer-social h4 {
+    font-size: 1.2rem;
+    color: var(--white-color);
+    margin-bottom: 20px;
+}
+
+.footer-contact p {
+    margin-bottom: 10px;
+    color: #ccc;
+}
+.footer-contact p i {
+    margin-left: 10px;
+    color: var(--primary-color);
+}
+
+.footer-social a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white-color);
+    margin-left: 10px;
+    transition: all 0.3s ease;
+}
+.footer-social a:hover {
+    background: var(--primary-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #444;
+}
+
+/* ========================
+   WHATSAPP FLOAT ICON
+   ======================== */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 30px;
+    left: 30px; /* غيرت الاتجاه لليسار ليتناسب مع اللغة العربية */
+    background-color: #25D366;
+    color: var(--white-color);
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+/* ========================
+   RESPONSIVE (MOBILE)
+   ======================== */
+@media (max-width: 768px) {
+    h1, .hero h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+    
+    .menu-icon {
+        display: block; /* إظهار أيقونة القائمة */
+    }
+
+    .nav-links {
+        display: none; /* إخفاء القائمة الرئيسية */
+        
+        /* -- هذه هي الإضافات الجديدة -- */
+        position: absolute;
+        top: 75px; /* ارتفاع شريط التنقل - قد يحتاج لتعديل بسيط */
+        right: 0; /* يبدأ من اليمين بسبب dir="rtl" */
+        width: 100%;
+        background: var(--white-color);
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        padding-bottom: 20px;
+    }
+    
+    /* هذا الكلاس هو الذي يظهره الـ JavaScript */
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        margin: 15px 0; /* مسافات رأسية بين الروابط */
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+    
+    .nav-links a:hover {
+        background-color: var(--light-gray);
+    }
+    
+    .btn-contact-nav {
+        width: 80%;
+        text-align: center;
+        margin-top: 10px;
+    }
+    
+    /* --- نهاية الإضافات --- */
+
+    .hero {
+        height: 70vh;
+    }
+    
+    /* ... باقي التنسيقات ... */
+}
+/* ========================
+   INTERNAL PAGE STYLES (ERP-X, Food-X, etc.)
+   ======================== */
+
+/* Hero Section لصفحات الأنظمة */
+.page-hero {
+    height: 60vh; /* ارتفاع أقل من الرئيسية */
+    background: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?fit=crop&w=1920&h=1080') no-repeat center center/cover;
+    position: relative;
+    color: var(--white-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 80px; /* لإزاحة المحتوى عن الـ Navbar */
 }
 
 .hero-page-icon {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  color: var(--secondary-color);
+    font-size: 4rem;
+    margin-bottom: 20px;
+    display: block;
+    color: var(--primary-color);
 }
 
 .page-hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
+    font-size: 3rem;
+    margin-bottom: 15px;
 }
 
 .page-hero p {
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin: 0 auto;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-/* قسم الاتصال */
+/* قسم المميزات في الصفحات الداخلية */
+.features-page-section {
+    padding: 80px 0;
+    background-color: var(--white-color);
+}
+
+.features-page-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.feature-page-card {
+    background: var(--light-gray);
+    padding: 30px;
+    border-radius: 10px;
+    border-right: 5px solid var(--primary-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.feature-page-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow);
+}
+
+.feature-page-card .card-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.feature-page-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.feature-page-card p {
+    color: #555;
+    flex-grow: 1; /* يضمن أن الكروت متساوية الارتفاع */
+}
+
+
+@media (max-width: 768px) {
+    h1, .hero h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+    
+    .menu-icon {
+        display: block; /* إظهار أيقونة القائمة */
+    }
+
+    .nav-links {
+        display: none; /* إخفاء القائمة الرئيسية */
+        
+        /* -- هذه هي الإضافات الجديدة -- */
+        position: absolute;
+        top: 75px; /* ارتفاع شريط التنقل - قد يحتاج لتعديل بسيط */
+        right: 0; /* يبدأ من اليمين بسبب dir="rtl" */
+        width: 100%;
+        background: var(--white-color);
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        padding-bottom: 20px;
+    }
+    
+    /* هذا الكلاس هو الذي يظهره الـ JavaScript */
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        margin: 15px 0; /* مسافات رأسية بين الروابط */
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+    
+    .nav-links a:hover {
+        background-color: var(--light-gray);
+    }
+    
+    .btn-contact-nav {
+        width: 80%;
+        text-align: center;
+        margin-top: 10px;
+    }
+    
+    /* --- نهاية الإضافات --- */
+
+    .hero {
+        height: 70vh;
+    }
+    
+    /* ... باقي التنسيقات ... */
+}
+
+
 .contact-page-section {
-  padding: 80px 0;
-  background-color: var(--light-bg);
+    padding: 80px 0;
+    background-color: var(--white-color);
 }
 
 .contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    background: var(--light-gray);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
 }
 
-.contact-form-container, 
-.contact-info-container {
-  background: var(--white);
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: var(--shadow);
+/* تنسيق جانب النموذج */
+.contact-form-container h3 {
+    margin-bottom: 10px;
 }
-
-.contact-form-container h3,
-.contact-info-container h3 {
-  color: var(--primary-color);
-  margin-bottom: 10px;
-  font-size: 1.5rem;
-}
-
-.contact-form-container p,
-.contact-info-container p {
-  margin-bottom: 20px;
-  color: #666;
+.contact-form-container p {
+    margin-bottom: 20px;
+    color: #666;
 }
 
 .form-group {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .form-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-family: 'Cairo', sans-serif;
-  font-size: 1rem;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: var(--font-family);
+    font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(0,123,255,0.3);
 }
 
 .form-group textarea {
-  resize: vertical;
+    resize: vertical;
 }
 
-.btn {
-  display: inline-block;
-  padding: 12px 24px;
-  background-color: var(--secondary-color);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: background-color 0.3s;
-  text-decoration: none;
-  font-family: 'Cairo', sans-serif;
+.contact-form button {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
 }
 
-.btn:hover {
-  background-color: #2980b9;
+/* تنسيق جانب معلومات الاتصال */
+.contact-info-container {
+    background-color: var(--white-color);
+    padding: 30px;
+    border-radius: 10px;
+    border-top: 5px solid var(--primary-color);
 }
 
-.btn-primary {
-  background-color: var(--secondary-color);
-  width: 100%;
+.contact-info-container h3 {
+    margin-bottom: 10px;
+}
+
+.contact-info-container p {
+    margin-bottom: 25px;
+    color: #666;
 }
 
 .contact-info-item {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px;
 }
 
 .contact-info-item i {
-  font-size: 1.2rem;
-  color: var(--secondary-color);
-  margin-left: 15px;
-  margin-top: 5px;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-left: 20px;
+    margin-top: 5px;
+    width: 30px; /* لتوحيد المسافات */
+}
+
+.contact-info-item div {
+    font-size: 1.1rem;
+}
+
+.contact-info-item strong {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    margin-bottom: 5px;
+}
+
+.contact-info-item p {
+    margin-bottom: 5px;
+    font-size: 1.1rem;
 }
 
 .contact-info-item a {
-  color: var(--secondary-color);
-  text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.3s;
 }
-
 .contact-info-item a:hover {
-  text-decoration: underline;
+    color: var(--primary-color);
 }
 
-/* التذييل */
-.footer {
-  background-color: var(--primary-color);
-  color: var(--white);
-  padding: 50px 0 0;
-}
-
-.footer-content {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 30px;
-  margin-bottom: 30px;
-}
-
-.footer-about h3 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-}
-
-.footer-about span {
-  color: var(--secondary-color);
-}
-
-.footer-about p {
-  line-height: 1.8;
-}
-
-.footer-contact h4,
-.footer-social h4 {
-  margin-bottom: 20px;
-  font-size: 1.2rem;
-}
-
-.footer-contact p {
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-}
-
-.footer-contact i {
-  margin-left: 8px;
-}
-
-.footer-social a {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  text-align: center;
-  line-height: 40px;
-  margin-left: 10px;
-  transition: background-color 0.3s;
-}
-
-.footer-social a:hover {
-  background-color: var(--secondary-color);
-}
-
-.footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 20px 0;
-  text-align: center;
-}
-
-/* زر الواتساب العائم */
-.whatsapp-float {
-  position: fixed;
-  bottom: 25px;
-  left: 25px;
-  background-color: #25d366;
-  color: white;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 60px;
-  font-size: 1.8rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-  transition: transform 0.3s;
-}
-
-.whatsapp-float:hover {
-  transform: scale(1.1);
-}
-
-/* وسائط الاستعلام للهواتف */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 70px;
-    right: 0;
-    background-color: var(--white);
-    width: 100%;
-    flex-direction: column;
-    padding: 20px;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  .nav-links.active {
-    display: flex;
-  }
-  
-  .menu-icon {
-    display: block;
-  }
-  
-  .page-hero {
-    height: 30vh;
-    margin-top: 60px;
-  }
-  
-  .page-hero h1 {
-    font-size: 2rem;
-  }
-  
-  .page-hero p {
-    font-size: 1rem;
-  }
-  
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-  
-  .footer-content {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-  
-  .whatsapp-float {
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    font-size: 1.5rem;
-    bottom: 20px;
-    left: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 0 10px;
-  }
-  
-  .page-hero h1 {
-    font-size: 1.8rem;
-  }
-  
-  .contact-form-container, 
-  .contact-info-container {
-    padding: 20px;
-  }
-  
-  .hero-page-icon {
-    font-size: 2.5rem;
-  }
+/* الاستجابة للموبايل لصفحة الاتصال */
+@media (max-width: 900px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
 }
     </style>
 </head>
@@ -547,8 +842,4 @@ body {
     </a>
     
 </body>
-
 </html>
-
-
-
